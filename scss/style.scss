@@ -2,7 +2,9 @@
 @import "./base/font";
 @import "./base/mixin";
 @import "./base/btn";
-
+body {
+    scroll-behavior: smooth;
+  }
 .header {
     @include size(100vw, auto);
     position: fixed;
@@ -28,7 +30,11 @@
         }
         a {
             padding: 15px 10px;
-            background: linear-gradient(90deg, #4ee5ea 3.94%, #26d0a8 94.73%);
+            background: linear-gradient(
+                90deg,
+                rgb(78, 229, 234) 3.94%,
+                #26d0a8 94.73%
+            );
             opacity: 1;
             transition: 0.5s;
             border-radius: 24px;
@@ -97,17 +103,160 @@
     }
     nav {
         @include size(100vw, 100vh);
-        background: linear-gradient(180deg, #585880 3.61%, #26c6d0 95.7%);
+        background: linear-gradient(
+            180deg,
+            rgba(88, 88, 128, 0.9) 3.61%,
+            rgba(38, 198, 208, 0.9) 95.7%
+        );
         position: absolute;
         top: 0;
         transition: 0.5s;
         clip-path: circle(10.7% at 100% 0);
         opacity: 0;
         z-index: -1;
+
+        .navlist {
+            max-width: 1200px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            margin: auto;
+            align-items: center;
+
+            div {
+                box-sizing: border-box;
+                padding: 20px;
+                // border: solid 1px black;
+                border-radius: 30px;
+                color: $white;
+                @include bgSetting(cover, center);
+
+                > div {
+                    margin: 20px 0;
+                    padding: 15% 40px;
+                    position: relative;
+
+                    h3 {
+                        text-decoration: none;
+                        margin: 0;
+                    }
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+            .left {
+                width: 35%;
+                height: 80vh;
+
+                div:first-child {
+                    background: $primary;
+                    background-image: url(../images/list1.png);
+                    h3,
+                    p {
+                        margin-left: 60px;
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background-image: url(../images/1.svg);
+                        @include bgSetting(contain, center);
+                        width: 50px;
+                        height: 70px;
+                        left: 15%;
+                        left: 40px;
+                    }
+                }
+                div:last-child {
+                    background: $dot;
+                    background-image: url(../images/list2.png);
+                    padding-top: 50%;
+                    h3,
+                    p {
+                        margin-left: 60px;
+                    }
+                    h3::after {
+                        background-color: $primary;
+                    }
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background-image: url(../images/2.svg);
+                        @include bgSetting(contain, center);
+                        width: 50px;
+                        height: 70px;
+                        left: 40px;
+                    }
+                }
+            }
+            .middle {
+                width: 30%;
+                height: 95vh;
+                
+                div:first-child {
+                    background: $highlight;
+                    background-image: url(../images/list3.png);
+                    padding-top: 85%;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background-image: url(../images/3.svg);
+                        @include bgSetting(contain, center);
+                        width: 100px;
+                        height: 50px;
+                        bottom: 30%;
+                    }
+                }
+                div:last-child {
+                    background: #26d0a8;
+                    background-image: url(../images/list4.png);
+                    padding-top: 35%;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background-image: url(../images/4a.svg);
+                        @include bgSetting(contain, center);
+                        width: 30px;
+                        height: 60px;
+                        top: 25%;
+                    }
+                }
+            }
+            .right {
+                width: 35%;
+                height: 80vh;
+                div:first-child {
+                    background: #585880;
+                    background-image: url(../images/list5.png);
+                    padding-top: 50%;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background-image: url(../images/5a.svg);
+                        @include bgSetting(contain, center);
+                        width: 50px;
+                        height: 60px;
+                        bottom: 40%;
+                    }
+                }
+                div:last-child {
+                    background: $white;
+                    p {
+                        color: $font;
+                    }
+                    h3 {
+                        color: $primary;
+                    }
+                }
+            }
+        }
     }
     .navOpen {
         clip-path: circle(110.9% at 51% 0);
-        opacity: 0.9;
+        opacity: 1;
         position: absolute;
     }
 }
@@ -448,11 +597,12 @@
             width: 40px;
             height: 1px;
             background-color: $primary;
-            display: inline-block;transform: rotate(-45deg);
+            display: inline-block;
+            transform: rotate(-45deg);
             position: absolute;
             top: 50%;
         }
-        p{
+        p {
             margin: 0;
             position: absolute;
         }

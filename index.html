@@ -41,7 +41,40 @@
                         <span></span>
                     </div>
                 </div>
-                <nav :class="{'navOpen':isActive}"></nav>
+                <nav :class="{'navOpen':isActive}">
+                    <div class="navlist">
+                        <div class="left">
+                            <div>
+                                <p>EMPOWERING BRNADS</p>
+                                <h3>ABOUT US</h3>
+                            </div>
+                            <div>
+                                <p>CASE STUDIES</p>
+                                <h3>WORKS</h3>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div>
+                                <p>BE COOL WITH US</p>
+                                <h3>CAREERS</h3>
+                            </div>
+                            <div>
+                                <p>OUR STRATIGES</p>
+                                <h3>INSIGHTS</h3>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div>
+                                <p>AREAS OF EXPERTISE</p>
+                                <h3>SERVICES</h3>
+                            </div>
+                            <div>
+                                <p>START YOUR JOURNEY WITH US</p>
+                                <h3>CONTACT</h3>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
             </header>
             <section class="banner">
                 <video autoplay muted loop>
@@ -127,7 +160,7 @@
                     </h2>
                 </div>
                 <div class="salad">
-                    <a href="#about">
+                    <a @click="goTo('#about')">
                         <img src="./images/salad.svg" alt="TASTE US NOW!" />
                         <p>TASTE US NOW!</p>
                     </a>

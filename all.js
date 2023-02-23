@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            isActive: false,
+            isActive: true,
             isActive2: false,
             awpics: [
                 { url: "./images/awards.svg", alt: "亞洲智能應用程式大獎" },
@@ -77,6 +77,11 @@ const app = Vue.createApp({
         };
     },
     methods: {
+        goTo(selector) {
+            document.querySelector(selector).scrollIntoView({
+                behavior: "smooth",
+            });
+        },
         navAppear() {
             const nav = document.querySelector(".headerItem");
             let scrollTop =
@@ -94,6 +99,7 @@ const app = Vue.createApp({
     mounted() {
         window.addEventListener("scroll", this.navAppear);
     },
+    
 });
 
 const vm = app.mount("#app");
