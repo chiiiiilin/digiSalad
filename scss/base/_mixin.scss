@@ -29,12 +29,12 @@
 
 //media
 @mixin pad() {
-    @media (max-width: 768px) {
+    @media (max-width: 1023.98px) {
         @content;
     }
 }
 @mixin mobile() {
-    @media (max-width: 414px) {
+    @media (max-width: 575.98px) {
         @content;
     }
 }

@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            isActive: true,
+            isActive: false,
             isActive2: false,
             awpics: [
                 { url: "./images/awards.svg", alt: "亞洲智能應用程式大獎" },
