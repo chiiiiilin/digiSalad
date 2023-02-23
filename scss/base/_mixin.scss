@@ -1,0 +1,40 @@
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+@mixin bgSetting($contain, $position) {
+    background-repeat: no-repeat;
+    background-size: $contain;
+    background-position: $position;
+}
+@mixin center($left, $top) {
+    position: relative;
+    left: $left;
+    top: $top;
+    transform: translate(-$left, -$top);
+}
+
+@mixin backline($color) {
+   &::before{
+    content: "";
+    border-top: 10px solid $color;
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+   }
+}
+
+//media
+@mixin pad() {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin mobile() {
+    @media (max-width: 414px) {
+        @content;
+    }
+}
