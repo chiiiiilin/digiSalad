@@ -9,6 +9,10 @@ h2 {
     line-height: 70px;
     letter-spacing: 9.16667px;
     color: $white;
+    @include mobile(){
+        font-size: 30px;
+        line-height: 60px;;
+    }
 }
 h3 {
     font-weight: 700;

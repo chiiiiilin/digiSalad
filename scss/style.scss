@@ -424,6 +424,9 @@ body {
             @include pad() {
                 top: 25%;
             }
+            @include mobile(){
+                display: none;
+            }
         }
         &::after {
             content: "";
@@ -436,6 +439,9 @@ body {
             top: 70%;
             @include pad() {
                 top: 45%;
+            }
+            @include mobile(){
+                display: none;
             }
         }
 
@@ -518,6 +524,9 @@ body {
         @include pad() {
             width: 85vw;
         }
+        @include mobile(){
+            width: 90vw;
+        }
         .aboutVideo {
             @include size(100%, 100%);
             object-fit: cover;
@@ -546,10 +555,12 @@ body {
     p {
         margin: 30px 10%;
         @include pad() {
-            margin: 30px 0;
+            margin: 30px auto;
         }
         @include mobile() {
             text-align: left;
+            display: inline-block;
+            width: 90vw;
         }
     }
 }
@@ -648,9 +659,10 @@ body {
             @include pad() {
                 width: 50%;
                 align-items: flex-start;
+                height: fit-content;
             }
             @include mobile() {
-                height: fit-content;
+                
             }
 
             .service-pic {
@@ -683,9 +695,9 @@ body {
                 margin: 10px auto auto;
             }
             a {
-                margin: auto;
-                @include mobile() {
-                    margin: 10px auto auto;
+                margin: 20px auto;
+                @include pad() {
+                    margin: 20px auto auto;
                     height: 15%;
                 }
             }
