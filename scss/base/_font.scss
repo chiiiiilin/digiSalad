@@ -1,3 +1,4 @@
+@import "./mixin" ;
 * {
     font-family: Proxima-Nova;
     font-style: normal;
@@ -34,6 +35,10 @@ h3 {
         right: -20px;
         bottom: 0;
     }
+
+    @include mobile{
+        font-size: 22px;
+    }
 }
 h4 {
     font-weight: 700;
@@ -41,16 +46,31 @@ h4 {
     line-height: 24px;
     letter-spacing: 2px;
     color: white;
+
+    @include mobile{
+        font-size: 14px;
+    }
 }
 p {
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
     letter-spacing: 1px;
+
+    @include mobile{
+        font-size: 12px;
+    }
 }
 
 .content-box {
     max-width: 1007px;
     text-align: center;
     margin: 0 auto;
+
+    @include pad() {
+        max-width: 760px;
+    }
+    @include mobile(){
+        max-width: 350px;
+    }
 }

@@ -4,6 +4,7 @@
 @import "./base/btn";
 body {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 .header {
     @include size(100vw, auto);
@@ -16,7 +17,7 @@ body {
         align-items: center;
         background-color: transparent;
 
-        @include mobile(){
+        @include mobile() {
             height: 70px;
         }
 
@@ -44,9 +45,9 @@ body {
             border-radius: 24px;
             margin: 0 0 0 auto;
 
-            @include mobile(){
+            @include mobile() {
                 opacity: 0;
-        }
+            }
         }
         .startBtnClose {
             opacity: 0;
@@ -403,6 +404,13 @@ body {
         top: 20%;
         left: 15%;
         height: 80vh;
+        @include pad() {
+            top: 30%;
+        }
+        @include mobile() {
+            top: 15%;
+            left: 5%;
+        }
 
         &::before {
             content: "DIGITAL AGENCY";
@@ -413,6 +421,9 @@ body {
             position: absolute;
             top: 40%;
             left: -30%;
+            @include pad() {
+                top: 25%;
+            }
         }
         &::after {
             content: "";
@@ -423,6 +434,9 @@ body {
             transform: rotate(-90deg);
             left: -28%;
             top: 70%;
+            @include pad() {
+                top: 45%;
+            }
         }
 
         h2 {
@@ -438,7 +452,9 @@ body {
                 width: 100%;
                 top: calc(100% - 25px);
                 z-index: -1;
-
+                @include mobile() {
+                    width: 90%;
+                }
                 &::after {
                     content: "";
                     @include size(10px, 10px);
@@ -461,10 +477,11 @@ body {
         &::after {
             content: "";
             display: block;
-            @include size(1px, 23%);
+            @include size(1px, 30%);
             background-color: $white;
             position: absolute;
             left: 50%;
+            bottom: 0;
         }
         a {
             display: inline-block;
@@ -497,20 +514,24 @@ body {
         @include size(60vw, auto);
         margin: 0 auto;
         overflow: hidden;
+
+        @include pad() {
+            width: 85vw;
+        }
         .aboutVideo {
             @include size(100%, 100%);
             object-fit: cover;
         }
-        .video-filter{
+        .video-filter {
             position: absolute;
             background-color: rgba(31, 31, 31, 0.5);
             @include size(100%, 100%);
             clip-path: circle(141.2% at 0 100%);
             bottom: 0;
             pointer-events: none;
-            transition: .5s;
+            transition: 0.5s;
         }
-        .videoFilterClose{
+        .videoFilterClose {
             clip-path: circle(11.1% at 0 100%);
             opacity: 0;
         }
@@ -524,12 +545,19 @@ body {
     }
     p {
         margin: 30px 10%;
+        @include pad() {
+            margin: 30px 0;
+        }
+        @include mobile() {
+            text-align: left;
+        }
     }
 }
 .awards {
     display: flex;
     justify-content: flex-end;
     margin-top: -200px;
+
     .awards-box {
         display: flex;
         justify-content: flex-start;
@@ -539,14 +567,27 @@ body {
         width: 85vw;
         padding: 65px;
 
+        @include pad() {
+            flex-direction: column;
+        }
+        @include mobile() {
+            padding: 25px;
+        }
+
         .awards-contents {
             width: 35%;
+            @include pad() {
+                width: 100%;
+            }
         }
         .awards-pics {
             @include size(55%, fit-content);
             display: flex;
             flex-wrap: wrap;
             padding-left: 50px;
+            @include pad() {
+                width: 100%;
+            }
 
             img {
                 width: 50%;
@@ -562,6 +603,7 @@ body {
     border-radius: 50px;
     z-index: -1;
     margin-top: -250px;
+    text-align: center;
 
     h3 {
         color: $white;
@@ -571,6 +613,13 @@ body {
         color: $white;
         margin: 50px auto;
         width: 80%;
+
+        @include pad() {
+            margin: 20px auto;
+        }
+        @include pad() {
+            display: none;
+        }
     }
     .primary-btn {
         background-color: $hb;
@@ -582,6 +631,11 @@ body {
         text-align: center;
         margin: 0 auto;
 
+        @include pad() {
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
         .service {
             display: flex;
             flex-direction: column;
@@ -591,10 +645,17 @@ body {
             margin: 30px auto;
             width: 33.333333%;
             height: 400px;
+            @include pad() {
+                width: 50%;
+                align-items: flex-start;
+            }
+            @include mobile() {
+                height: fit-content;
+            }
 
             .service-pic {
                 background-color: $white;
-                border-radius: 50%;
+                border-radius: 50px;
                 margin: 0 auto;
                 @include size(108px, 108px);
                 display: flex;
@@ -612,6 +673,10 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                @include pad() {
+                    width: 100%;
+                    height: 50px;
+                }
             }
             p {
                 height: 50%;
@@ -619,32 +684,37 @@ body {
             }
             a {
                 margin: auto;
+                @include mobile() {
+                    margin: 10px auto auto;
+                    height: 15%;
+                }
             }
         }
-        > p {
-            font-size: 18px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-            width: fit-content;
+    }
+    > p {
+        font-size: 18px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        width: fit-content;
 
-            &::before {
-                content: "";
-                border-top: 10px solid $highlight;
-                position: absolute;
-                display: block;
-                width: 100%;
-                top: 50%;
-                left: 0;
-                z-index: -1;
-            }
+        &::before {
+            content: "";
+            border-top: 10px solid $highlight;
+            position: absolute;
+            display: block;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            z-index: -1;
         }
     }
 }
 .tony {
     display: flex;
     justify-content: flex-start;
+
     .tony-box {
         display: flex;
         justify-content: center;
@@ -655,6 +725,15 @@ body {
         width: 75%;
         border-radius: 0 50px 50px 50px;
         margin-top: -250px;
+
+        @include pad() {
+            flex-direction: column;
+            padding: 40px;
+        }
+        @include mobile() {
+            padding: 20px;
+            width: 85%;
+        }
 
         .tony-pic {
             padding: 20px 60px;
@@ -673,12 +752,19 @@ body {
                 margin: 0;
                 font-style: italic;
             }
+            @include pad() {
+                width: 100%;
+            }
         }
         .tony-content {
             width: 70%;
             color: $white;
             position: relative;
             transform: translateY(30px);
+
+            @include pad() {
+                width: 100%;
+            }
             p {
                 font-size: 22px;
                 line-height: 48px;
@@ -686,6 +772,10 @@ body {
 
                 span {
                     color: $highlight;
+                }
+                @include mobile() {
+                    font-size: 16px;
+                    line-height: 24px;
                 }
             }
 
@@ -709,6 +799,14 @@ body {
 
     p {
         padding: 50px 0;
+        @include pad() {
+            padding: 20px 0;
+        }
+    }
+    img {
+        @include pad() {
+            width: 100%;
+        }
     }
 }
 .intro {
@@ -737,6 +835,9 @@ body {
         right: 10%;
         top: 20%;
         @include size(50px, 50px);
+        @include mobile() {
+            display: none;
+        }
         .line {
             width: 40px;
             height: 1px;
@@ -770,6 +871,7 @@ body {
     .intro-box {
         max-width: 1440px;
         width: 100%;
+        height: 100%;
         display: flex;
         position: absolute;
         top: 0;
@@ -777,7 +879,6 @@ body {
         right: 0;
         bottom: 0;
         margin: auto;
-        // margin-top: 10%;
 
         .pre,
         .next {
@@ -786,6 +887,14 @@ body {
             padding: 80px;
             margin: auto;
             cursor: pointer;
+            z-index: 1;
+            @include pad() {
+                top: 30%;
+            }
+            @include mobile {
+                padding: 5px;
+                top: 40%;
+            }
         }
         .pre {
             left: 0;
@@ -800,15 +909,29 @@ body {
             box-sizing: border-box;
             width: 80%;
             height: 100%;
-            margin: 100px auto auto;
+            margin: auto;
             display: flex;
             justify-content: space-evenly;
+
+            @include pad() {
+                flex-direction: column;
+            }
 
             .intro-pic {
                 width: 40%;
                 height: 60%;
                 box-sizing: border-box;
                 position: relative;
+
+                @include pad() {
+                    width: 60%;
+                    height: 35%;
+                    margin: 0 auto;
+                }
+                @include mobile() {
+                    width: 90%;
+                    height: 40%;
+                }
                 img {
                     border-radius: 50px;
                     margin: 50px;
@@ -818,8 +941,11 @@ body {
                 }
                 a {
                     position: absolute;
-                    bottom: -40%;
+                    top: 95%;
                     right: -30px;
+                    @include mobile() {
+                        top: 100%;
+                    }
                 }
             }
             .intro-content {
@@ -827,14 +953,26 @@ body {
                 color: $white;
                 text-align: left;
                 box-sizing: border-box;
-                padding: 80px 0 0 80px;
+                padding: 5% 0 0 5%;
 
+                @include pad() {
+                    width: 100%;
+                    padding: 0;
+                }
+                h4 {
+                    @include mobile() {
+                        margin: 10px 0;
+                    }
+                }
                 h3 {
                     text-decoration: none;
                     position: relative;
                     z-index: 1;
                     display: inline-block;
                     width: fit-content;
+                    @include pad() {
+                        margin: 0;
+                    }
                     span {
                         border-top: 8px solid #26c6d0;
                         position: absolute;
@@ -842,6 +980,11 @@ body {
                         width: 100%;
                         bottom: 3px;
                         z-index: -1;
+                    }
+                }
+                p {
+                    @include mobile() {
+                        display: none;
                     }
                 }
             }

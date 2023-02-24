@@ -30,6 +30,12 @@ a {
         background-color: $white;
         margin-left: 25px;
     }
+    @include mobile(){
+        padding: 25px 22px;
+        margin: 30px auto;
+    }
+        
+    
 }
 
 .secondary-btn {
