@@ -74,7 +74,4 @@ p {
     @include pad() {
         max-width: 760px;
     }
-    @include mobile(){
-        max-width: 350px;
-    }
 }
