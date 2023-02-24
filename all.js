@@ -3,6 +3,7 @@ const app = Vue.createApp({
         return {
             isActive: false,
             isActive2: false,
+            isPlaying: false,
             awpics: [
                 { url: "./images/awards.svg", alt: "亞洲智能應用程式大獎" },
                 { url: "./images/awards.svg", alt: "亞洲智能應用程式大獎" },
@@ -74,6 +75,45 @@ const app = Vue.createApp({
                     href: "#",
                 },
             ],
+            showIntro: 0,
+            introduction: [
+                {
+                    url: "./images/intro1.jpg",
+                    alt: "highlighted showcase",
+                    href: "#",
+                    subtitle: "HIGHLIGHTED SHOWCASE",
+                    title: "LP CLUB MOBILE APP",
+                    content:
+                        "Cras quis nulla commodo, aliquam lectus sed,blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta.Nam condimentum vitae ligula vel ornare.Phasellus at semper turpis. Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie faucibus.",
+                },
+                {
+                    url: "./images/intro2.png",
+                    alt: "life with my cat",
+                    href: "#",
+                    subtitle: "CAT GOODS",
+                    title: "LIFE WITH MY CAT",
+                    content:
+                        "Cras quis nulla commodo, aliquam lectus sed,blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta.Nam condimentum vitae ligula vel ornare.Phasellus at semper turpis. Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie faucibus.",
+                },
+                {
+                    url: "./images/intro3.jpg",
+                    alt: "highlighted showcase",
+                    href: "#",
+                    subtitle: "HIGHLIGHTED SHOWCASE",
+                    title: "MIKILIN",
+                    content:
+                        "Cras quis nulla commodo, aliquam lectus sed,blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta.Nam condimentum vitae ligula vel ornare.Phasellus at semper turpis. Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie faucibus.",
+                },
+                {
+                    url: "./images/intro4.png",
+                    alt: "EAT SOME GOOD",
+                    href: "#",
+                    subtitle: "EAT SOME GOOD!",
+                    title: "HEALTH CHECK APP",
+                    content:
+                        "Cras quis nulla commodo, aliquam lectus sed,blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta.Nam condimentum vitae ligula vel ornare.Phasellus at semper turpis. Nunc eu tellus tortor. Etiam at condimentum nisl, vitae sagittis orci. Donec id dignissim nunc. Donec elit ante, eleifend a dolor et, venenatis facilisis dolor. In feugiat orci odio, sed lacinia sem elementum quis. Aliquam consectetur, eros et vulputate euismod, nunc leo tempor lacus, ac rhoncus neque eros nec lacus. Cras lobortis molestie faucibus.",
+                },
+            ],
         };
     },
     methods: {
@@ -95,11 +135,32 @@ const app = Vue.createApp({
                 this.isActive2 = false;
             }
         },
+        togglePlay(){
+            const videoPlayer = this.$refs.videoPlayer;
+            if(this.isPlaying == true){
+                videoPlayer.pause();
+            }else{
+                videoPlayer.play();
+            }
+            this.isPlaying = !this.isPlaying;
+        },
+        setShowIntro(changeIdx = 1) {
+            switch (true) {
+                case changeIdx === 1 && this.showIntro === this.introduction.length - 1:
+                    this.showIntro = 0;
+                    break;
+                case changeIdx === -1 && this.showIntro === 0:
+                    this.showIntro = this.introduction.length - 1;
+                    break;
+                default:
+                    this.showIntro = this.showIntro + changeIdx;
+                    break;
+            }
+        },
     },
     mounted() {
         window.addEventListener("scroll", this.navAppear);
     },
-    
 });
 
 const vm = app.mount("#app");
