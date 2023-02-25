@@ -14,14 +14,19 @@ a {
     }
 }
 .primary-btn {
+    position: relative;
     display: flex;
     width: fit-content;
     background: #26c6d0;
+    border: 2px solid rgba(255, 255, 255, 0);
     justify-content: center;
     align-items: center;
     margin: 0 auto 70px;
     padding: 35px 32px;
     border-radius: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
 
     &::after {
         content: " ";
@@ -29,13 +34,36 @@ a {
         height: 2px;
         background-color: $white;
         margin-left: 25px;
+
+        @include mobile(){
+            display: none;
+        }
     }
-    @include mobile(){
+
+    &::before {
+        content: " ";
+        display: block;
+        width: 350px;
+        height: 120px;
+        background: rgba(255, 255, 255, .4);
+        position: absolute;
+        top: -50px;
+        left: -330px;
+        transform: rotate(-45deg);
+        transition: all 0.3s ease-in-out;
+        z-index: -1;
+    }
+
+    &:hover, &:active {
+        border: 2px solid rgba(255, 255, 255, 1);
+        &::before {
+            margin-left: 300%;
+        }
+    }
+    @include mobile() {
         padding: 25px 22px;
         margin: 30px auto;
     }
-        
-    
 }
 
 .secondary-btn {
@@ -44,8 +72,70 @@ a {
     color: $white;
     padding: 15px 35px;
     margin: 0 auto 70px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in;
+    z-index: 1;
 
-    span {
-        font-size: 14px;
+    &::before,
+    &::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background-color: $white;
+        display: inline-block;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+    }
+    &::before {
+        left: -20px;
+        transform: translate(-50%, -50%);
+    }
+    &::after {
+        right: -20px;
+        transform: translate(50%, -50%);
+    }
+    &:hover,
+    &:active {
+        color: $primary;
+        border: none;
+        &::before {
+            animation: secondary-btn-left 0.6s both;
+        }
+        &::after {
+            animation: secondary-btn-right 0.6s both;
+        }
+    }
+}
+@keyframes secondary-btn-left {
+    0% {
+        left: -20px;
+    }
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        left: 50%;
+        width: 180px;
+        height: 82px;
+    }
+}
+@keyframes secondary-btn-right {
+    0% {
+        right: -20px;
+    }
+    50% {
+        right: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        right: 50%;
+        width: 180px;
+        height: 82px;
     }
 }
