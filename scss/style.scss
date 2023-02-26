@@ -485,6 +485,9 @@ body {
         h2 {
             position: relative;
             z-index: 1;
+            @include mobile() {
+                width: 87vw;
+            }
             span {
                 display: block;
                 opacity: 0;
@@ -507,9 +510,6 @@ body {
                 z-index: -1;
                 animation: width 4s 0.6s ease-in forwards;
 
-                @include mobile() {
-                    width: 90%;
-                }
                 &::after {
                     content: "";
                     @include size(10px, 10px);
@@ -975,9 +975,9 @@ body {
             padding: 80px;
             margin: auto;
             cursor: pointer;
-            transition: .5s;
+            transition: 0.5s;
             z-index: 1;
-            
+
             @include pad() {
                 top: 30%;
             }
@@ -988,9 +988,13 @@ body {
         }
         .pre {
             left: 0;
-            &:hover {
+            &:hover,
+            &:active {
                 transform: translateX(-15px);
-                filter:drop-shadow(4px 4px 4px rgba(0,0,0,.4));
+                filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.4));
+                @include mobile() {
+                    transform: translateX(-5px);
+                }
             }
             img {
                 transform: rotate(-180deg);
@@ -998,9 +1002,13 @@ body {
         }
         .next {
             right: 0;
-            &:hover {
+            &:hover,
+            &:active {
                 transform: translateX(15px);
-                filter:drop-shadow(4px 4px 4px rgba(0,0,0,.4));
+                filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.4));
+                @include mobile() {
+                    transform: translateX(5px);
+                }
             }
         }
         .intro-inner {
