@@ -17,7 +17,7 @@
         />
     </head>
     <body>
-        <div id="app">
+        <div id="app" v-cloak>
             <header class="header">
                 <div class="headerItem">
                     <h1 class="logo">
@@ -84,6 +84,7 @@
                 <video autoplay muted loop>
                     <source src="./videos/DigiSalad Website Video-v3.mp4" />
                 </video>
+                <div class="video-filter"></div>
                 <div class="top">
                     <div class="logo">
                        <img src="./images/logo-big.svg" alt="">
@@ -271,20 +272,20 @@
                     <div class="pre">
                         <img
                             src="./images/arrow.svg"
-                            alt="pre"
-                            @click="setShowIntro(-1)"
+                            alt="prev"
+                            @click="prev()"
                         />
                     </div>
                     <div class="intro-inner">
-                        <div class="intro-pic leftIn">
+                        <div class="intro-pic">
                             <img :src="intro.url" :alt="intro.alt" />
                             <a :href="intro.href" class="primary-btn">
                                 <span>VIEW PROJECT</span>
                             </a>
                         </div>
-                        <div class="intro-content leftIn">
+                        <div class="intro-content">
                             <h4>{{intro.subtitle}}</h4>
-                            <h3>{{intro.title}}<span></span></h3>
+                            <h3>{{intro.title}}<span class="progress"></span></h3>
                             <p>{{intro.content}}</p>
                         </div>
                     </div>
@@ -292,7 +293,7 @@
                         <img
                             src="./images/arrow.svg"
                             alt="next"
-                            @click="setShowIntro(1)"
+                            @click="next()"
                         />
                     </div>
                 </div>

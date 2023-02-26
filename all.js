@@ -138,12 +138,14 @@ const app = Vue.createApp({
         },
         listFadeIn() {
             let navItem = document.querySelectorAll(".item");
-            navItem[0].style.animation = "fadeIn .8s forwards";
-            navItem[1].style.animation = "fadeIn .8s .2s forwards";
-            navItem[2].style.animation = "fadeIn .8s .4s forwards";
-            navItem[3].style.animation = "fadeIn .8s .6s forwards";
-            navItem[4].style.animation = "fadeIn .8s .8s forwards";
-            navItem[5].style.animation = "fadeIn .8s 1s forwards";
+            if (this.isActive) {
+                navItem[0].style.animation = "fadeIn .8s forwards";
+                navItem[1].style.animation = "fadeIn .8s .1s forwards";
+                navItem[2].style.animation = "fadeIn .8s .2s forwards";
+                navItem[3].style.animation = "fadeIn .8s .3s forwards";
+                navItem[4].style.animation = "fadeIn .8s .4s forwards";
+                navItem[5].style.animation = "fadeIn .8s .5s forwards";
+            }
         },
         togglePlay() {
             const videoPlayer = this.$refs.videoPlayer;
@@ -156,30 +158,27 @@ const app = Vue.createApp({
         },
         startTimer() {
             this.timer = setInterval(() => {
-                this.setShowIntro(1);
-            }, 8000);
+                this.next();
+            }, 6000);
         },
         stopTimer() {
             clearInterval(this.timer);
         },
-        setShowIntro(changeIdx = 1) {
-            let intro = document.querySelectorAll(".leftIn");
-            switch (true) {
-                case changeIdx === 1 &&
-                    this.showIntro === this.introduction.length - 1:
-                    this.showIntro = 0;
-                    // intro.style.animation = "leftIn .8s forwards";
-                    break;
-                case changeIdx === -1 && this.showIntro === 0:
-                    this.showIntro = this.introduction.length - 1;
-                    // intro.style.animation = "leftIn .8s forwards";
-                    break;
-                default:
-                    this.showIntro = this.showIntro + changeIdx;
-                    // intro.style.animation = "leftIn .8s forwards";
-                    break;
-            }
+        next() {
+            this.showIntro = (this.showIntro + 1) % this.introduction.length;
             this.stopTimer();
+            // this.introFadeIn();
+            setTimeout(this.startTimer(), 1000);
+        },
+        prev() {
+            this.stopTimer();
+            if (this.showIntro >= 1) {
+                this.showIntro--;
+                // this.introFadeIn();
+            } else if (this.showIntro == 0) {
+                this.showIntro = this.introduction.length - 1;
+                // this.introFadeIn();
+            }
             this.startTimer();
         },
     },
