@@ -535,6 +535,7 @@ body {
             @include size(1px, 30%);
             background-color: $white;
             position: absolute;
+            transform: translateX(-50%);
             left: 50%;
             bottom: 0;
         }
@@ -571,7 +572,7 @@ body {
         background-color: $hb;
         position: absolute;
         left: 50%;
-        transform: translateY(-4px);
+        transform: translate(-50%, -4px);
     }
 }
 .about {
@@ -1255,3 +1256,4 @@ body {
         width: 100%;
     }
 }
+  
